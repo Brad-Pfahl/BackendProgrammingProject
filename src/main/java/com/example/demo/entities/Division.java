@@ -1,0 +1,43 @@
+package com.example.demo.entities;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.*;
+
+@Entity
+@Table(name="division")
+@Getter
+@Setter
+public class Division {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "division_name")
+    private String division_name;
+
+    @Column(name = "create_date")
+    @CreationTimestamp
+    private Date create_date;
+
+    @Column(name = "last_update")
+    @UpdateTimestamp
+    private Date last_update;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
+    private Country country;
+
+    @Column(name = "country_ID")
+    private Long country_ID;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
+    private Set<Customer> customers;
+
+}
