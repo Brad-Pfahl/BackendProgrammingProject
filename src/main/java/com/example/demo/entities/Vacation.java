@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
-@Table(name="vacation")
+@Table(name="vacations")
 @Getter
 @Setter
 public class Vacation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "vacation_id")
     private Long id;
 
     @Column(name = "vacation_title")
@@ -26,10 +26,10 @@ public class Vacation {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "travel_price")
+    @Column(name = "travel_fare_price")
     private BigDecimal travel_price;
 
-    @Column(name = "image_URL")
+    @Column(name = "image_url")
     private String image_URL;
 
     @Column(name = "create_date")

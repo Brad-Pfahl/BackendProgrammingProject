@@ -10,23 +10,23 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @Entity
-@Table(name="cart")
+@Table(name="carts")
 @Getter
 @Setter
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "cart_id")
     private Long id;
 
-    @Column(name = "order_tracking_number")
+    @Column(name = "order_Tracking_Number")
     private String orderTrackingNumber;
 
-    @Column(name = "package_price")
+    @Column(name = "package_Price")
     private BigDecimal package_price;
 
-    @Column(name = "party_size")
+    @Column(name = "party_Size")
     private int party_size;
 
     @Column(name = "status")
