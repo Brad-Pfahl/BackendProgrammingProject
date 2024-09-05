@@ -38,6 +38,6 @@ public class Division {
     private Long country_ID;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
-    private Set<Customer> customers;
+    private Set<Customer> customers = new HashSet<Customer>();
 
 }
