@@ -5,6 +5,7 @@ import com.example.demo.dao.CustomerRepository;
 import com.example.demo.entities.Cart;
 import com.example.demo.entities.CartItem;
 import com.example.demo.entities.Customer;
+import com.example.demo.entities.StatusType;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,9 @@ public class CheckoutServiceImpl implements CheckoutService{
         // populate customer with cart
         Customer customer = purchase.getCustomer();
         customer.add(cart);
+
+        // change cart status
+        cart.setStatus(StatusType.ordered);
 
         // save to the database
         customerRepository.save(customer);
