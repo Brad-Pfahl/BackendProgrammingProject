@@ -37,12 +37,11 @@ public class Excursion {
     @UpdateTimestamp
     private Date last_update;
 
-    @ManyToOne
-    @JoinColumn(name = "vacation_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "vacation_id")
     private Vacation vacation;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "excursion_cartitem", joinColumns = @JoinColumn(name = "cart_item_id"), inverseJoinColumns = @JoinColumn(name = "excursion_id"))
-    private Set<CartItem> cartitems;
+    @ManyToMany(mappedBy = "excursions")
+    private Set<CartItem> cartItems;
 
 }

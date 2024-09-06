@@ -19,15 +19,15 @@ public class CartItem {
     @Column(name = "cart_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="vacation_id",nullable = false)
     private Vacation vacation;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="excursion_cartitem", joinColumns = @JoinColumn(name = "cart_item_id"), inverseJoinColumns = @JoinColumn(name="excursion_id"))
-    private Set<Excursion> excursions = new HashSet<Excursion>();
+    private Set<Excursion> excursions;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="cart_id", nullable = false)
     private Cart cart;
 

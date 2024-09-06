@@ -40,6 +40,6 @@ public class Vacation {
     @UpdateTimestamp
     private Date last_update;
 
-    @OneToMany(mappedBy = "vacation", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "vacation", fetch = FetchType.LAZY)
     private Set<Excursion> excursions;
 }

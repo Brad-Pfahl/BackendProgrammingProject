@@ -34,10 +34,14 @@ public class Division {
     @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
     private Country country;
 
-    @Column(name = "country_ID")
-    private Long country_ID;
+    @Column(name = "country_id")
+    private Long country_id;
+    public void setCountry(Country country) {
+        setCountry_id(country.getId());
+        this.country = country;
+    }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
-    private Set<Customer> customers = new HashSet<Customer>();
+    private Set<Customer> customers = new HashSet<>();
 
 }

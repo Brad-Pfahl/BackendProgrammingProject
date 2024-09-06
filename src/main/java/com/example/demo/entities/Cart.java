@@ -20,13 +20,13 @@ public class Cart {
     @Column(name = "cart_id")
     private Long id;
 
-    @Column(name = "order_Tracking_Number")
+    @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
 
-    @Column(name = "package_Price")
+    @Column(name = "package_price")
     private BigDecimal package_price;
 
-    @Column(name = "party_Size")
+    @Column(name = "party_size")
     private int party_size;
 
     @Column(name = "status")
@@ -45,18 +45,14 @@ public class Cart {
     @JoinColumn(name="customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart", fetch = FetchType.LAZY)
     private Set<CartItem> cartItem = new HashSet<CartItem>();
 
     public void add(CartItem item) {
-        if (item != null) {
             if (cartItem == null) {
                 cartItem = new HashSet<>();
             }
-
             cartItem.add(item);
             item.setCart(this);
-        }
-
     }
 }

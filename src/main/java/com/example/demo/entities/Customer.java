@@ -44,7 +44,7 @@ public class Customer {
     @UpdateTimestamp
     private Date last_update;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "division_id")
     private Division division;
 
