@@ -24,6 +24,16 @@ public class CheckoutServiceImpl implements CheckoutService{
     @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
 
+        // Validate that the customer is not set to null
+        if (purchase.getCustomer() == null) {
+            throw new IllegalArgumentException("ERROR: The customer cannot be null");
+        }
+
+        // Validate that the cart is not empty or null
+        if (purchase.getCartItems().isEmpty() || purchase.getCartItems() == null) {
+            throw new IllegalArgumentException("ERROR: The cart cannot be empty");
+        }
+
         // retrieve the cart info from dto
         Cart cart = purchase.getCart();
 
